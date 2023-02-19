@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DB3701129A283F200878B9D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3701029A283F200878B9D /* HomeViewController.swift */; };
+		2DB3701329A2840F00878B9D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3701229A2840F00878B9D /* SearchViewController.swift */; };
+		2DB3701529A2843100878B9D /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3701429A2843100878B9D /* NotificationsViewController.swift */; };
+		2DB3701729A2845000878B9D /* DirectMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3701629A2845000878B9D /* DirectMessagesViewController.swift */; };
 		2DFDF9E02989978F00315F16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFDF9DF2989978F00315F16 /* AppDelegate.swift */; };
 		2DFDF9E22989978F00315F16 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFDF9E12989978F00315F16 /* SceneDelegate.swift */; };
 		2DFDF9E42989978F00315F16 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFDF9E32989978F00315F16 /* MainTabBarViewController.swift */; };
@@ -15,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DB3701029A283F200878B9D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2DB3701229A2840F00878B9D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		2DB3701429A2843100878B9D /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		2DB3701629A2845000878B9D /* DirectMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessagesViewController.swift; sourceTree = "<group>"; };
 		2DFDF9DC2989978F00315F16 /* TwttrClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwttrClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DFDF9DF2989978F00315F16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DFDF9E12989978F00315F16 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +43,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DB3700E29A281DE00878B9D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2DB3700F29A281F400878B9D /* Core */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2DB3700F29A281F400878B9D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2DFDF9E32989978F00315F16 /* MainTabBarViewController.swift */,
+				2DB3701029A283F200878B9D /* HomeViewController.swift */,
+				2DB3701229A2840F00878B9D /* SearchViewController.swift */,
+				2DB3701429A2843100878B9D /* NotificationsViewController.swift */,
+				2DB3701629A2845000878B9D /* DirectMessagesViewController.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		2DFDF9D32989978F00315F16 = {
 			isa = PBXGroup;
 			children = (
@@ -54,9 +82,9 @@
 		2DFDF9DE2989978F00315F16 /* TwttrClone */ = {
 			isa = PBXGroup;
 			children = (
+				2DB3700E29A281DE00878B9D /* Controllers */,
 				2DFDF9DF2989978F00315F16 /* AppDelegate.swift */,
 				2DFDF9E12989978F00315F16 /* SceneDelegate.swift */,
-				2DFDF9E32989978F00315F16 /* MainTabBarViewController.swift */,
 				2DFDF9E82989979200315F16 /* Assets.xcassets */,
 				2DFDF9EA2989979200315F16 /* LaunchScreen.storyboard */,
 				2DFDF9ED2989979200315F16 /* Info.plist */,
@@ -134,9 +162,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DB3701329A2840F00878B9D /* SearchViewController.swift in Sources */,
 				2DFDF9E42989978F00315F16 /* MainTabBarViewController.swift in Sources */,
 				2DFDF9E02989978F00315F16 /* AppDelegate.swift in Sources */,
+				2DB3701529A2843100878B9D /* NotificationsViewController.swift in Sources */,
 				2DFDF9E22989978F00315F16 /* SceneDelegate.swift in Sources */,
+				2DB3701129A283F200878B9D /* HomeViewController.swift in Sources */,
+				2DB3701729A2845000878B9D /* DirectMessagesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
