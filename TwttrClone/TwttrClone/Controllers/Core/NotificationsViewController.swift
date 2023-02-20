@@ -13,6 +13,10 @@ class NotificationsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let titleScreen = UILabel(frame:CGRect(x:12,y:100,width: self.view.frame.size.width,height: 40))
+        titleScreen.textColor = .black
+        titleScreen.text = "Notifications Screen"
+        self.view.addSubview(titleScreen)
     }
     
 
