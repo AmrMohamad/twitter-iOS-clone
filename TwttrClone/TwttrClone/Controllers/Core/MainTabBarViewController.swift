@@ -15,24 +15,24 @@ class MainTabBarViewController: UITabBarController {
         view.backgroundColor = .systemBackground
         
         // MARK: - root VC
-        let vc1 = UINavigationController (rootViewController: HomeViewController () )
-        let vc2 = UINavigationController(rootViewController: SearchViewController ( ))
-        let vc3 = UINavigationController(rootViewController: NotificationsViewController () )
-        let vc4 = UINavigationController (rootViewController: DirectMessagesViewController ( ))
+        let homeVC = UINavigationController (rootViewController: HomeViewController())
+        let searchVC = UINavigationController(rootViewController: SearchViewController())
+        let notificationsVC = UINavigationController(rootViewController: NotificationsViewController())
+        let DMsVC = UINavigationController (rootViewController: DirectMessagesViewController())
         
         // MARK: - set icon for each tab
-        vc1.tabBarItem.image = UIImage (systemName: "house")
-        vc1.tabBarItem.selectedImage = UIImage (systemName: "house.fill")
+        homeVC.tabBarItem.image = UIImage (systemName: "house")
+        homeVC.tabBarItem.selectedImage = UIImage (systemName: "house.fill")
         
-        vc2.tabBarItem.image = UIImage (systemName: "magnifyingglass")
+        searchVC.tabBarItem.image = UIImage (systemName: "magnifyingglass")
         
-        vc3.tabBarItem.image = UIImage (systemName: "bell")
-        vc3.tabBarItem.selectedImage = UIImage(systemName: "bell.fill")
+        notificationsVC.tabBarItem.image = UIImage (systemName: "bell")
+        notificationsVC.tabBarItem.selectedImage = UIImage(systemName: "bell.fill")
         
-        vc4.tabBarItem.image = UIImage (systemName: "envelope")
-        vc4.tabBarItem.selectedImage = UIImage (systemName: "envelope.fill")
+        DMsVC.tabBarItem.image = UIImage (systemName: "envelope")
+        DMsVC.tabBarItem.selectedImage = UIImage (systemName: "envelope.fill")
         
-        setViewControllers([vc1,vc2,vc3,vc4], animated: true)
+        setViewControllers([homeVC,searchVC,notificationsVC,DMsVC], animated: true)
     }
 
 

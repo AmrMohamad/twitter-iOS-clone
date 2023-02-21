@@ -9,26 +9,34 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    let timeLineTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "tweetPostCell")
+        return tableView
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        let titleScreen = UILabel(frame:CGRect(x:12,y:100,width: self.view.frame.size.width,height: 40))
-        titleScreen.textColor = .black
-        titleScreen.text = "Home Screen"
-        self.view.addSubview(titleScreen)
+        timeLineTableView.delegate = self
+        timeLineTableView.dataSource = self
+        view.addSubview(timeLineTableView)
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        timeLineTableView.frame = view.frame
     }
-    */
 
+}
+
+extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 15
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let tweetPostCell = tableView.dequeueReusableCell(withIdentifier: "tweetPostCell", for: indexPath)
+        tweetPostCell.textLabel?.text = "tweet text"
+        return tweetPostCell
+    }
+    
 }
