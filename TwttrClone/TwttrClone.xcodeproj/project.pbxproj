@@ -63,6 +63,13 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		2DD2C82429A63EFC00DC2735 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		2DFDF9D32989978F00315F16 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +89,7 @@
 		2DFDF9DE2989978F00315F16 /* TwttrClone */ = {
 			isa = PBXGroup;
 			children = (
+				2DD2C82429A63EFC00DC2735 /* Views */,
 				2DB3700E29A281DE00878B9D /* Controllers */,
 				2DFDF9DF2989978F00315F16 /* AppDelegate.swift */,
 				2DFDF9E12989978F00315F16 /* SceneDelegate.swift */,
