@@ -34,9 +34,18 @@ class TweetTableViewCell: UITableViewCell {
     private let userNameLabel : UILabel = {
         let userName = UILabel()
         userName.text = "@username"
+        userName.textColor = .secondaryLabel
         userName.font = .systemFont(ofSize: 14, weight: .light)
         userName.translatesAutoresizingMaskIntoConstraints = false
         return userName
+    }()
+    
+    private let tweetTextContent : UILabel = {
+        let tweetText = UILabel()
+        tweetText.translatesAutoresizingMaskIntoConstraints = false
+        tweetText.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+        tweetText.numberOfLines = 0
+        return tweetText
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -44,6 +53,7 @@ class TweetTableViewCell: UITableViewCell {
         contentView.addSubview(avaterImageView)
         contentView.addSubview(accountNameLabel)
         contentView.addSubview(userNameLabel)
+        contentView.addSubview(tweetTextContent)
         
         configureConstraints()
     }
@@ -70,8 +80,16 @@ class TweetTableViewCell: UITableViewCell {
             userNameLabel.centerYAnchor.constraint(equalTo: accountNameLabel.centerYAnchor)
         ]
         
+        let tweetTextContentConstraints = [
+            tweetTextContent.leadingAnchor.constraint(equalTo: avaterImageView.trailingAnchor, constant: 10),
+            tweetTextContent.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10),
+            tweetTextContent.topAnchor.constraint(equalTo: accountNameLabel.bottomAnchor, constant: 10),
+            tweetTextContent.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 1)
+        ]
+        
         NSLayoutConstraint.activate(avaterImageViewConstraints)
         NSLayoutConstraint.activate(accountNameConstraints)
         NSLayoutConstraint.activate(userNameLabelConstraints)
+        NSLayoutConstraint.activate(tweetTextContentConstraints)
     }
 }

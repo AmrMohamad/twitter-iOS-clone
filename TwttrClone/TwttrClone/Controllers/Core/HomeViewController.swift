@@ -40,8 +40,8 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
         return tweetCell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 120
+//    }
     
 }
