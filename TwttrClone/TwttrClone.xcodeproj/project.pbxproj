@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D81B9CE29AA1FAE004F036E /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D81B9CD29AA1FAE004F036E /* TweetTableViewCell.swift */; };
 		2DB3701129A283F200878B9D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3701029A283F200878B9D /* HomeViewController.swift */; };
 		2DB3701329A2840F00878B9D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3701229A2840F00878B9D /* SearchViewController.swift */; };
 		2DB3701529A2843100878B9D /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB3701429A2843100878B9D /* NotificationsViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D81B9CD29AA1FAE004F036E /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		2DB3701029A283F200878B9D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2DB3701229A2840F00878B9D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		2DB3701429A2843100878B9D /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		2DD2C82429A63EFC00DC2735 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2D81B9CD29AA1FAE004F036E /* TweetTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				2DFDF9E22989978F00315F16 /* SceneDelegate.swift in Sources */,
 				2DB3701129A283F200878B9D /* HomeViewController.swift in Sources */,
 				2DB3701729A2845000878B9D /* DirectMessagesViewController.swift in Sources */,
+				2D81B9CE29AA1FAE004F036E /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

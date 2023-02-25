@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
 
     let timeLineTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "tweetPostCell")
+        tableView.register(TweetTableViewCell.self, forCellReuseIdentifier: TweetTableViewCell.indentifier)
         return tableView
     }()
     override func viewDidLoad() {
@@ -34,9 +34,14 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
         return 15
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tweetPostCell = tableView.dequeueReusableCell(withIdentifier: "tweetPostCell", for: indexPath)
-        tweetPostCell.textLabel?.text = "tweet text"
-        return tweetPostCell
+        guard let tweetCell = tableView.dequeueReusableCell(withIdentifier: TweetTableViewCell.indentifier, for: indexPath) as? TweetTableViewCell else {
+            return UITableViewCell()
+        }
+        return tweetCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
     
 }
