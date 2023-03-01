@@ -10,6 +10,9 @@ import UIKit
 class TweetTableViewCell: UITableViewCell {
     
     static let indentifier = "TweetTableViewCell"
+    private let gapBetweenActionButtons: CGFloat = 55
+    
+    // MARK: - Avater Image Properties
     
     private let avaterImageView : UIImageView = {
         let image = UIImageView()
@@ -23,6 +26,7 @@ class TweetTableViewCell: UITableViewCell {
         return image
     }()
     
+    // MARK: - accountName Properties
     private let accountNameLabel : UILabel = {
         let accountName = UILabel()
         accountName.text = "Account Title"
@@ -30,7 +34,7 @@ class TweetTableViewCell: UITableViewCell {
         accountName.translatesAutoresizingMaskIntoConstraints = false
         return accountName
     }()
-    
+    // MARK: - userName Properties
     private let userNameLabel : UILabel = {
         let userName = UILabel()
         userName.text = "@username"
@@ -43,9 +47,42 @@ class TweetTableViewCell: UITableViewCell {
     private let tweetTextContent : UILabel = {
         let tweetText = UILabel()
         tweetText.translatesAutoresizingMaskIntoConstraints = false
-        tweetText.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+        tweetText.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,\n when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
         tweetText.numberOfLines = 0
         return tweetText
+    }()
+    // MARK: - Action buttoms
+    
+    let commentButtom : UIButton = {
+        let buttom = UIButton(type: .system)
+        buttom.translatesAutoresizingMaskIntoConstraints = false
+        buttom.setImage(UIImage(systemName: "message"), for: .normal)
+        buttom.tintColor = .systemGray2
+        return buttom
+    }()
+    
+    let reTweetButtom : UIButton = {
+        let buttom = UIButton(type: .system)
+        buttom.translatesAutoresizingMaskIntoConstraints = false
+        buttom.setImage(UIImage(systemName: "arrow.2.squarepath"), for: .normal)
+        buttom.tintColor = .systemGray2
+        return buttom
+    }()
+    
+    let likeButtom : UIButton = {
+        let buttom = UIButton(type: .system)
+        buttom.translatesAutoresizingMaskIntoConstraints = false
+        buttom.setImage(UIImage(systemName: "heart"), for: .normal)
+        buttom.tintColor = .systemGray2
+        return buttom
+    }()
+    
+    let shareButtom : UIButton = {
+        let buttom = UIButton(type: .system)
+        buttom.translatesAutoresizingMaskIntoConstraints = false
+        buttom.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        buttom.tintColor = .systemGray2
+        return buttom
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -54,6 +91,10 @@ class TweetTableViewCell: UITableViewCell {
         contentView.addSubview(accountNameLabel)
         contentView.addSubview(userNameLabel)
         contentView.addSubview(tweetTextContent)
+        contentView.addSubview(commentButtom)
+        contentView.addSubview(reTweetButtom)
+        contentView.addSubview(likeButtom)
+        contentView.addSubview(shareButtom)
         
         configureConstraints()
     }
@@ -82,14 +123,41 @@ class TweetTableViewCell: UITableViewCell {
         
         let tweetTextContentConstraints = [
             tweetTextContent.leadingAnchor.constraint(equalTo: avaterImageView.trailingAnchor, constant: 10),
-            tweetTextContent.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10),
+            tweetTextContent.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             tweetTextContent.topAnchor.constraint(equalTo: accountNameLabel.bottomAnchor, constant: 10),
-            tweetTextContent.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 1)
+            tweetTextContent.bottomAnchor.constraint(equalTo: commentButtom.topAnchor, constant: -5)
+        ]
+        
+        let commentButtomConstraints = [
+            commentButtom.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            commentButtom.leadingAnchor.constraint(equalTo: tweetTextContent.leadingAnchor)
+        ]
+        let reTweetButtomConstraints = [
+            reTweetButtom.centerYAnchor.constraint(equalTo: commentButtom.centerYAnchor),
+            reTweetButtom.leadingAnchor.constraint(equalTo: commentButtom.trailingAnchor,
+                                                   constant: gapBetweenActionButtons)
+        ]
+        
+        let likeButtomConstraints = [
+            likeButtom.centerYAnchor.constraint(equalTo: commentButtom.centerYAnchor),
+            likeButtom.leadingAnchor.constraint(equalTo: reTweetButtom.trailingAnchor,
+                                                constant: gapBetweenActionButtons)
+        ]
+        
+        let shareButtomConstraints = [
+            shareButtom.centerYAnchor.constraint(equalTo: commentButtom.centerYAnchor),
+            shareButtom.leadingAnchor.constraint(equalTo: likeButtom.trailingAnchor,
+                                                 constant: gapBetweenActionButtons)
         ]
         
         NSLayoutConstraint.activate(avaterImageViewConstraints)
         NSLayoutConstraint.activate(accountNameConstraints)
         NSLayoutConstraint.activate(userNameLabelConstraints)
         NSLayoutConstraint.activate(tweetTextContentConstraints)
+        NSLayoutConstraint.activate(commentButtomConstraints)
+        NSLayoutConstraint.activate(reTweetButtomConstraints)
+        NSLayoutConstraint.activate(likeButtomConstraints)
+        NSLayoutConstraint.activate(shareButtomConstraints)
+        
     }
 }
