@@ -7,10 +7,21 @@
 
 import UIKit
 
+protocol TweetCellDelegate{
+    func tweetCelldidCommentButtonPressed()
+    func tweetCelldidRetweetButtonPressed()
+    func tweetCelldidLikeButtonPressed()
+    func tweetCelldidShareButtonPressed()
+}
+
 class TweetTableViewCell: UITableViewCell {
     
     static let indentifier = "TweetTableViewCell"
     private let gapBetweenActionButtons: CGFloat = 55
+    
+    
+    var delegate: TweetCellDelegate?
+    
     
     // MARK: - Avater Image Properties
     
@@ -53,7 +64,7 @@ class TweetTableViewCell: UITableViewCell {
     }()
     // MARK: - Action buttoms
     
-    let commentButtom : UIButton = {
+    let commentButton : UIButton = {
         let buttom = UIButton(type: .system)
         buttom.translatesAutoresizingMaskIntoConstraints = false
         buttom.setImage(UIImage(systemName: "message"), for: .normal)
@@ -61,7 +72,7 @@ class TweetTableViewCell: UITableViewCell {
         return buttom
     }()
     
-    let reTweetButtom : UIButton = {
+    let reTweetButton : UIButton = {
         let buttom = UIButton(type: .system)
         buttom.translatesAutoresizingMaskIntoConstraints = false
         buttom.setImage(UIImage(systemName: "arrow.2.squarepath"), for: .normal)
@@ -69,7 +80,7 @@ class TweetTableViewCell: UITableViewCell {
         return buttom
     }()
     
-    let likeButtom : UIButton = {
+    let likeButton : UIButton = {
         let buttom = UIButton(type: .system)
         buttom.translatesAutoresizingMaskIntoConstraints = false
         buttom.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -77,7 +88,7 @@ class TweetTableViewCell: UITableViewCell {
         return buttom
     }()
     
-    let shareButtom : UIButton = {
+    let shareButton : UIButton = {
         let buttom = UIButton(type: .system)
         buttom.translatesAutoresizingMaskIntoConstraints = false
         buttom.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
@@ -91,18 +102,36 @@ class TweetTableViewCell: UITableViewCell {
         contentView.addSubview(accountNameLabel)
         contentView.addSubview(userNameLabel)
         contentView.addSubview(tweetTextContent)
-        contentView.addSubview(commentButtom)
-        contentView.addSubview(reTweetButtom)
-        contentView.addSubview(likeButtom)
-        contentView.addSubview(shareButtom)
-        
+        contentView.addSubview(commentButton)
+        contentView.addSubview(reTweetButton)
+        contentView.addSubview(likeButton)
+        contentView.addSubview(shareButton)
+        likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         configureConstraints()
+        configureButtons()
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
-    
+    @objc func commentButtonTapped(){
+        delegate?.tweetCelldidCommentButtonPressed()
+    }
+    @objc func retweetButtonTapped(){
+        delegate?.tweetCelldidRetweetButtonPressed()
+    }
+    @objc func likeButtonTapped(){
+        delegate?.tweetCelldidLikeButtonPressed()
+    }
+    @objc func shareButtonTapped(){
+        delegate?.tweetCelldidShareButtonPressed()
+    }
+    func configureButtons(){
+        commentButton.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
+        reTweetButton.addTarget(self, action: #selector(retweetButtonTapped), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+        shareButton.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
+    }
     private func configureConstraints (){
         let avaterImageViewConstraints = [
             avaterImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
@@ -125,28 +154,28 @@ class TweetTableViewCell: UITableViewCell {
             tweetTextContent.leadingAnchor.constraint(equalTo: avaterImageView.trailingAnchor, constant: 10),
             tweetTextContent.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             tweetTextContent.topAnchor.constraint(equalTo: accountNameLabel.bottomAnchor, constant: 10),
-            tweetTextContent.bottomAnchor.constraint(equalTo: commentButtom.topAnchor, constant: -5)
+            tweetTextContent.bottomAnchor.constraint(equalTo: commentButton.topAnchor, constant: -5)
         ]
         
         let commentButtomConstraints = [
-            commentButtom.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-            commentButtom.leadingAnchor.constraint(equalTo: tweetTextContent.leadingAnchor)
+            commentButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            commentButton.leadingAnchor.constraint(equalTo: tweetTextContent.leadingAnchor)
         ]
-        let reTweetButtomConstraints = [
-            reTweetButtom.centerYAnchor.constraint(equalTo: commentButtom.centerYAnchor),
-            reTweetButtom.leadingAnchor.constraint(equalTo: commentButtom.trailingAnchor,
+        let reTweetButtonConstraints = [
+            reTweetButton.centerYAnchor.constraint(equalTo: commentButton.centerYAnchor),
+            reTweetButton.leadingAnchor.constraint(equalTo: commentButton.trailingAnchor,
                                                    constant: gapBetweenActionButtons)
         ]
         
-        let likeButtomConstraints = [
-            likeButtom.centerYAnchor.constraint(equalTo: commentButtom.centerYAnchor),
-            likeButtom.leadingAnchor.constraint(equalTo: reTweetButtom.trailingAnchor,
+        let likeButtonConstraints = [
+            likeButton.centerYAnchor.constraint(equalTo: commentButton.centerYAnchor),
+            likeButton.leadingAnchor.constraint(equalTo: reTweetButton.trailingAnchor,
                                                 constant: gapBetweenActionButtons)
         ]
         
-        let shareButtomConstraints = [
-            shareButtom.centerYAnchor.constraint(equalTo: commentButtom.centerYAnchor),
-            shareButtom.leadingAnchor.constraint(equalTo: likeButtom.trailingAnchor,
+        let shareButtonConstraints = [
+            shareButton.centerYAnchor.constraint(equalTo: commentButton.centerYAnchor),
+            shareButton.leadingAnchor.constraint(equalTo: likeButton.trailingAnchor,
                                                  constant: gapBetweenActionButtons)
         ]
         
@@ -155,9 +184,9 @@ class TweetTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate(userNameLabelConstraints)
         NSLayoutConstraint.activate(tweetTextContentConstraints)
         NSLayoutConstraint.activate(commentButtomConstraints)
-        NSLayoutConstraint.activate(reTweetButtomConstraints)
-        NSLayoutConstraint.activate(likeButtomConstraints)
-        NSLayoutConstraint.activate(shareButtomConstraints)
+        NSLayoutConstraint.activate(reTweetButtonConstraints)
+        NSLayoutConstraint.activate(likeButtonConstraints)
+        NSLayoutConstraint.activate(shareButtonConstraints)
         
     }
 }

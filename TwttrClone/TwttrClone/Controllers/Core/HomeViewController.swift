@@ -37,11 +37,32 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
         guard let tweetCell = tableView.dequeueReusableCell(withIdentifier: TweetTableViewCell.indentifier, for: indexPath) as? TweetTableViewCell else {
             return UITableViewCell()
         }
+        tweetCell.delegate = self
         return tweetCell
     }
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return 120
 //    }
+    
+}
+
+extension HomeViewController: TweetCellDelegate{
+    func tweetCelldidCommentButtonPressed() {
+        print("comment")
+    }
+    
+    func tweetCelldidRetweetButtonPressed() {
+        print("retweet")
+    }
+    
+    func tweetCelldidLikeButtonPressed() {
+        print("like")
+    }
+    
+    func tweetCelldidShareButtonPressed() {
+        print("share")
+    }
+    
     
 }
